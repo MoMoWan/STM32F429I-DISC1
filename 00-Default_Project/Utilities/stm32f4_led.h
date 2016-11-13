@@ -12,10 +12,13 @@
 
 #define LED_PORT					GPIOG
 	 
-void LED_Init(void);	 
+void LED_Init(void);
+	 
 #define LED_On(led)					GPIO_SetBits(LED_PORT, led);
 #define LED_Off(led)				GPIO_ResetBits(LED_PORT, led);
 #define LED_Toggle(led)				GPIO_ToggleBits(LED_PORT, led);
+#define LED_IsOn(led)				(((LED_PORT)->ODR & (led)) == 0 ? 0 : 1)
+
 	 
 #ifdef __cplusplus
 }
